@@ -9,7 +9,7 @@ import {
   taskStatusFilterSchema,
   type TaskStatusFilter,
 } from "./domain/task.js";
-import { InMemoryTaskStore } from "./store/in-memory-task-store.js";
+import { JsonTaskStore } from "./store/json-task-store.js";
 import { TaskNotFoundError, TaskService } from "./service/task-service.js";
 
 function tokenize(line: string): string[] {
@@ -116,8 +116,12 @@ export function runCli(
   input: Readable = process.stdin,
   output: Writable = process.stdout,
   errorOutput: Writable = process.stderr,
+  taskFilePath = resolve(process.cwd(), ".tasks.json"),
 ): Promise<number> {
-  const service = new TaskService(new InMemoryTaskStore());
+  const taskStore = new JsonTaskStore(taskFilePath, (message) => {
+    errorOutput.write(`${message}\n`);
+  });
+  const service = new TaskService(taskStore);
   const terminal = input === process.stdin && process.stdin.isTTY === true;
   const readline = createInterface({
     input,

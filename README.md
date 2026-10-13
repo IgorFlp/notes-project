@@ -65,7 +65,9 @@ exit
 
 ## Dados
 
-As tarefas ficam em memória no processo. Os comandos da CLI compartilham a mesma store durante uma sessão; os dados são descartados ao sair ou encerrar o processo. Uma instância separada da API e uma sessão da CLI não compartilham estado.
+Inicie a CLI na raiz do projeto. As tarefas da CLI são carregadas de `.tasks.json` nessa pasta e gravadas após cada criação, conclusão ou remoção; o arquivo é local e ignorado pelo Git. Se o arquivo estiver inválido ou não puder ser lido, a CLI avisa em `stderr`, inicia sem tarefas e tenta substituí-lo na próxima alteração que puder ser gravada. Se uma gravação falhar, a alteração não é confirmada, a sessão continua e o erro é informado em `stderr`.
+
+A API HTTP não lê nem altera esse arquivo: mantém sua própria store em memória, independente da CLI, e perde os dados ao encerrar o processo.
 
 ## Desenvolvimento
 

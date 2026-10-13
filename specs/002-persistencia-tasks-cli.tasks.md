@@ -4,7 +4,7 @@ Base: [especificação 002](./002-persistencia-tasks-cli.spec.md) e [plano 002](
 
 Cada tarefa deve ser implementada e revisada como uma unidade pequena. Os testes da funcionalidade fazem parte da tarefa correspondente.
 
-## T001 — Implementar store JSON e testes unitários
+- [x] **T001 — Implementar store JSON e testes unitários**
 
 **Dependências:** nenhuma.
 
@@ -19,7 +19,7 @@ Cada tarefa deve ser implementada e revisada como uma unidade pequena. Os testes
 
 **Concluída quando:** os testes da store demonstram restauração entre instâncias, substituição atômica e preservação do estado anterior em falhas.
 
-## T002 — Integrar store persistente à CLI
+- [x] **T002 — Integrar store persistente à CLI**
 
 **Dependências:** T001.
 
@@ -34,7 +34,7 @@ Cada tarefa deve ser implementada e revisada como uma unidade pequena. Os testes
 
 **Concluída quando:** os testes da CLI provam que tarefas persistem entre sessões e que falhas não são reportadas como sucesso nem alteram o estado mantido pela store.
 
-## T003 — Ignorar o arquivo local e atualizar documentação
+- [x] **T003 — Ignorar o arquivo local e atualizar documentação**
 
 **Dependências:** nenhuma.
 
@@ -46,7 +46,7 @@ Cada tarefa deve ser implementada e revisada como uma unidade pequena. Os testes
 
 **Concluída quando:** o README descreve o comportamento definido na especificação e `.tasks.json` é ignorado pelo Git sem afetar arquivos de especificação ou código.
 
-## T004 — Verificar integração e critérios de aceite
+- [x] **T004 — Verificar integração e critérios de aceite**
 
 **Dependências:** T001, T002 e T003.
 
